@@ -1,6 +1,0 @@
-namespace LoginScenario.Areas.HelpPage.ModelDescriptions
-{
-    public class DictionaryModelDescription : KeyValuePairModelDescription
-    {
-    }
-}
