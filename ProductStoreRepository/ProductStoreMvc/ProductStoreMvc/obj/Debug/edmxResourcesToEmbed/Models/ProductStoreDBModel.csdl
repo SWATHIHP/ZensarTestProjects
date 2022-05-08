@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProductStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_Product" Relationship="Self.FK__tbl_Produ__Categ__47DBAE45" FromRole="tbl_Category" ToRole="tbl_Product" />
+  </EntityType>
+  <EntityType Name="tbl_Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="UnitID" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="tbl_Category" Relationship="Self.FK__tbl_Produ__Categ__47DBAE45" FromRole="tbl_Product" ToRole="tbl_Category" />
+  </EntityType>
+  <EntityType Name="tbl_Unit">
+    <Key>
+      <PropertyRef Name="UnitId" />
+      <PropertyRef Name="UnitName" />
+    </Key>
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+    <Property Name="UnitName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tbl_Produ__Categ__47DBAE45">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="tbl_Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProductStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" />
+    <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" />
+    <EntitySet Name="tbl_Unit" EntityType="Self.tbl_Unit" />
+    <AssociationSet Name="FK__tbl_Produ__Categ__47DBAE45" Association="Self.FK__tbl_Produ__Categ__47DBAE45">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Product" EntitySet="tbl_Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

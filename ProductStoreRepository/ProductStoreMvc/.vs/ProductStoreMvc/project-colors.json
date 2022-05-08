@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "29d14694-faf0-421d-9a8e-c6159570d85c": {
+      "ProjectGuid": "29d14694-faf0-421d-9a8e-c6159570d85c",
+      "DisplayName": "ProductStoreMvc",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
